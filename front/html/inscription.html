@@ -1,0 +1,97 @@
+<div id="inscription">
+    <header>
+        <div @click="homepageRoute" class="logoContainer">
+            <p>partagez votre potager</p>
+        </div>
+        <div class="menu">
+            <img src="../../images/hamburger.png" @click="stopAnimation" :class="{ helloWorld: isActive }" class="dropdown redTomatoe" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></img>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a @click="homepageRoute" class="dropdown-item" href="#">accueil</a>
+                <a @click="connexionPage" class="dropdown-item" href="#">connexion</a>
+                <a @click="potagerPage" class="dropdown-item" href="#">potagers</a>
+                <a @click="jardiniersPage" class="dropdown-item" href="#">jardiniers</a>
+                <a @click="inscriptionPage" class="dropdown-item" href="#">inscription</a>
+            </div>
+        </div>
+    </header>
+
+<div class="jumbotron connexionJumbo text-center">
+    <h1>inscription</h1>
+    <hr class="my-4">
+    <form @submit="formValidation" >
+        <div class="container justify-content-center">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="prenom">Prénom</label>
+                    <input v-model="prenom" type="text" name="prenom">
+                </div>
+                <div class="col-xs-12">
+                    <label for="address">Adresse</label>
+                    <input v-model="numero_porte" type="text" name="adresse">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="nom">Nom</label>
+                    <input v-model="nom" type="text" name="nom">
+                </div>
+                <div class="col-xs-12">
+                    <label for="ville">Ville</label>
+                    <input v-model="ville" type="text" name="ville">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="courriel">Courriel</label>
+                    <input v-model="email" type="email" name="courriel">
+                </div>
+                <div class="col-xs-12">
+                    <label for="codePostal">Code postal</label>
+                    <input v-model="code_postal" type="text" name="codePostal">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="password">Mot de passe</label>
+                    <input v-model="password" type="password" name="password">
+                </div>
+                <div class="col-xs-12">
+                    <label for="secretquestion">Question secrète</label>
+                    <input v-model="question_secrete" type="text" name="secretquestion" list="questions">
+                    <datalist id="questions">
+                        <option value="Question1"></option>
+                        <option value="Question2"></option>
+                        <option value="Question3"></option>
+                        <option value="Question4"></option>
+                    </datalist>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="confirmation">Confirmation</label>
+                    <input v-model="confirmation" type="password" name="confirmation">
+                </div>
+                <div class="col-xs-12">
+                    <label for="reponse">Réponse</label>
+                    <input v-model="reponse" type="text" name="reponse">
+                </div>
+            </div>
+            <p  v-if="errorMessage !== ''">{{ errorMessage }}</p>
+            <div class="row justify-content-center mt-5"> 
+                <div class="col">
+                    <button type="submit" class="btn">soumettre</button>  
+                    <button  type="button" @click="refresh" v-if="errorMessage !== '' " class="btn" >actualiser</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+  </div>
+
+  <div class="newFooter">
+    <img src="../../images/cavabienaller.png" alt="logoCaVaBienAller">
+      <h5>Une production DreamTeam</h5>
+</div>
+
+</div>

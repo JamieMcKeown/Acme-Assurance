@@ -1,0 +1,90 @@
+<div id="accueil">
+    <header>
+        <div @click="homepageRoute" class="logoContainer">
+            <p>partagez votre potager</p>
+        </div>
+        <div class="menu">
+            <img src="../../images/hamburger.png" @click="stopAnimation" :class="{ helloWorld: isActive }" class="dropdown redTomatoe" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></img>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a v-if='disconnected' @click="connexionPage" class="dropdown-item" href="#">connexion</a>
+                <a @click="potagerPage" class="dropdown-item" href="#">potagers</a>
+                <a @click="jardiniersPage" class="dropdown-item" href="#">jardiniers</a>
+                <a v-if='disconnected' @click="inscriptionPage" class="dropdown-item" href="#">inscription</a>
+                <a @click="pageProfil" v-if="connected" class="dropdown-item" href="#">mon profil</a>
+                <a @click="deconnexion" v-if="connected" class="dropdown-item" href="#">déconnexion</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div v-if="searchOption == false"class="row cucumber my-3">
+            <div @click="searchClicked" class="col text-center">
+                <img src="../../images/rechercheRapide.png" alt="" srcset="">
+            </div>
+        </div>
+        <div v-if="searchOption" class="row">
+            <div class="col search">
+                <form>
+                    <div class="form-group text-center">
+                     
+                      <input  value="recherche" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+            
+                    <div class="form-group form-check">
+                        
+                            <input type="radio" name="optionSearch" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">distance</label>
+                            <input type="radio" name="optionSearch" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">jardinier</label>
+                            <input type="radio" name="optionSearch" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">potager</label>
+                
+                    </div>
+                    <div class="searchButtonContainer">
+                        <button type="submit" class="btn">soumettre</button>
+                        <button @click="closeSearch"type="submit" class="btn xButton">x</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col potagerTitle text-center ">
+                Potagers
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div v-for="potager in potagers" class="col-xs-5 col-sm-6 col-md-3 my-2">
+                <div class="card"  >
+                    <img :src="potager.image" class="card-img-top" alt="Image de profil du potager">
+                    <div class="card-body">              
+                      <a href="#" @click="moveToPotager(potager.id)"class="btn btn-primary">Potager de {{ potager.Prenom }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row ">
+            <div class="col potagerTitle text-center ">
+                Jardiniers
+            </div>
+        </div>
+        <div class="row justify-content-center my-2">
+            <div v-for="user in users" class="col-xs-5 col-sm-6 col-md-3 my-2">
+                <div class="card"  >
+                    <img :src="user.image" class="card-img-top" alt="...">
+                    <div class="card-body">              
+                      <a href="#" @click="moveToJardinier(user.id)" class="btn btn-primary">Page de {{ user.prenom }} {{ user.nom }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="newFooter">
+        <img src="../../images/cavabienaller.png" alt="logoCaVaBienAller">
+          <h5>Une production DreamTeam</h5>
+    </div>
+
+</div>
