@@ -1,23 +1,10 @@
 <div id="inscription">
     <header>
-        <div @click="homepageRoute" class="logoContainer">
-            <p>partagez votre potager</p>
-        </div>
-        <div class="menu">
-            <img src="../../images/hamburger.png" @click="stopAnimation" :class="{ helloWorld: isActive }" class="dropdown redTomatoe" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></img>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a @click="homepageRoute" class="dropdown-item" href="#">accueil</a>
-                <a @click="connexionPage" class="dropdown-item" href="#">connexion</a>
-                <a @click="potagerPage" class="dropdown-item" href="#">potagers</a>
-                <a @click="jardiniersPage" class="dropdown-item" href="#">jardiniers</a>
-                <a @click="inscriptionPage" class="dropdown-item" href="#">inscription</a>
-            </div>
-        </div>
+       
     </header>
 
 <div class="jumbotron connexionJumbo text-center">
-    <h1>inscription</h1>
-    <hr class="my-4">
+    
     <form @submit="formValidation" >
         <div class="container justify-content-center">
             <div class="row">
@@ -89,9 +76,6 @@
 
   </div>
 
-  <div class="newFooter">
-    <img src="../../images/cavabienaller.png" alt="logoCaVaBienAller">
-      <h5>Une production DreamTeam</h5>
-</div>
+
 
 </div>

@@ -1,11 +1,10 @@
-import tpl from '../../utils/avecTemplateHtml'
-import { http_get, http_post } from '../../utils/request'
-import validator from "../../../node_modules/validator/es/index"
+import tpl from '../../js/utils/avecTemplateHtml'
+
 
 
 
 export default tpl({
-    template: './html/horsConnexion/inscription.html',
+    template: './html/inscription.html',
     data () {
         return {
             isActive: true,
