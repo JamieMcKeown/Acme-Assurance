@@ -15,7 +15,7 @@
     <form 
         v-if="etape1"
         @submit.prevent>
-      <h3>étape 1 sur 3</h3>
+      <h3>étape 1 de 2</h3>
         <div class="form-group">
           <label>prénom</label>
           <input v-model="prenom" type="text" class="form-control" >
@@ -31,12 +31,14 @@
         <label for="exampleInputEmail1">courriel</label>
         <input v-model="courriel" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <button @click="lienForm2"type="submit" class="btn  mt-4 ">soumettre</button>
+        <button @click="homepageRoute"type="submit" class="btn  mt-4 ">retour a l'accueil</button>
+
     </form>
 
     <form 
         v-if="etape2"
         @submit.prevent>
-      <h3>étape 2 sur 3</h3>
+      <h3>étape 2 de 2</h3>
       <div class="form-group">
         <label >code postale de l'habitation assuré</label>
         <input v-model="cpAssurer" type="text" class="form-control" value="A1A1A1" >
@@ -50,6 +52,8 @@
           <input v-model="reclamations" type="checkbox" name="reclamations" value="oui" class="form-control" >
         </div>
         <button @click="lienForm3"type="submit" class="btn  mt-4 ">soumettre</button>
+        <button @click="homepageRoute"type="submit" class="btn  mt-4 ">retour a l'accueil</button>
+
     </form>
 
   
@@ -66,7 +70,6 @@
           <a @click="envoyerBD" class="btn" href="#" role="button">confirmer</a>
           <a @click="homepageRoute" class="btn" href="#" role="button">retour a l'accueil</a>
         </div>
-  </div>
-
-
 </div>
+
+

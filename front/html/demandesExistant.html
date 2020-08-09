@@ -1,3 +1,75 @@
 <div class="demandesExistants">
 
+    <div class="accueil">
+
+        <div class="accueil-container">
+            <div class="titre-slogan">
+                <h2>Acme Assurance</h2>
+                <h6>Chez Acme, on finance vos assurances!</h6>
+            </div>
+            <div class="logo-container">
+                <img src="../images/logo.jpg" alt="" srcset="">
+            </div>
+        </div>
+    
+       
+    
+    </div>
+
+    <form 
+        v-if="etape1"
+        @submit.prevent>
+      <h3>étape 1 de 2</h3>
+        <div class="form-group">
+          <label>prénom</label>
+          <input v-model="prenom" type="text" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label >nom</label>
+          <input v-model="nom" type="text" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label >code postale</label>
+          <input v-model="codePostale" type="text" class="form-control" value="format = A1A1A1" >
+        </div>
+        <label for="exampleInputEmail1">courriel</label>
+        <input v-model="courriel" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <button @click="lienForm2"type="submit" class="btn  mt-4 ">soumettre</button>
+        <button @click="homepageRoute"type="submit" class="btn  mt-4 ">retour a l'accueil</button>
+    </form>
+
+    <form 
+        v-if="etape2"
+        @submit.prevent>
+      <h3>étape 2 de 2</h3>
+      <div class="form-group">
+        <label >code postale de l'habitation assuré</label>
+        <input v-model="cpAssurer" type="text" class="form-control" value="A1A1A1" >
+      </div>
+        <div class="form-group">
+          <label># de voitures assurer</label>
+          <input v-model="nombreVoitures" type="number" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label >réclamation/s depuis 2015 ?</label>
+          <input v-model="reclamations" type="checkbox" name="reclamations" value="oui" class="form-control" >
+        </div>
+        <button @click="lienForm3"type="submit" class="btn  mt-4 ">soumettre</button>
+        <button @click="homepageRoute"type="submit" class="btn  mt-4 ">retour a l'accueil</button>
+    </form>
+
+    <div v-if="etape3" class="jumbotron">
+        <h1 class="display-4">sommaire de votre demande</h1>
+        <p class="lead">{{prenom}} {{ nom }}</p>
+        <hr class="my-4">
+        <p>nombre de voitures assurer : {{nombreVoitures}}</p>
+        <p>réclamation/s depuis 2015 : {{reclamations}}</p>
+        <p>code postale assurer : {{cpAssurer}}</p>
+        <p>coute totale $ (automobiles) : {{coutVoitures}}</p>
+        <p>coute totale $ (maison) : {{coutMaison}}</p>
+        <p>coute totale $ ( automobiles + maison) : {{coutTotale}}</p>
+        <a @click="envoyerBD" class="btn" href="#" role="button">confirmer</a>
+        <a @click="homepageRoute" class="btn" href="#" role="button">retour a l'accueil</a>
+    </div>
+
 </div>

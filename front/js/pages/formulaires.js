@@ -25,6 +25,8 @@ export default tpl({
     methods: {
         homepageRoute() {
             this.$router.push("/")
+            localStorage.clear()
+            
         },
         lienForm2() {
             this.etape1 = false
@@ -46,7 +48,7 @@ export default tpl({
             console.log(localStorage)
             this.etape3 = true
 
-           
+           //calcul assurance maison
 
             if (this.cpAssurer == ""){
                 this.coutMaison = 0
@@ -54,6 +56,8 @@ export default tpl({
                 else {
                     this.coutMaison = 1500;
                 }
+            //calcul assurance vouitures 
+            this.coutVoitures = this.nombreVoitures * 750
 
             if (this.reclamations){
                 this.reclamations = "oui"
