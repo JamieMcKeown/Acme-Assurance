@@ -3,7 +3,7 @@ import tpl from '../../js/utils/avecTemplateHtml'
 
 
 export default tpl({
-    template: './html/accueil.html',
+    template: './html/recap.html',
     data () {
         return {
             
@@ -19,12 +19,7 @@ export default tpl({
         homepageRoute() {
             this.$router.push("/").catch(err => {})
         }, 
-        routeFormulaires() {
-            this.$router.push("/formulaires")
-        },
-        routeDemandesExistant() {
-            this.$router.push("/demandesExistant")
-        },
+       
      
 
       

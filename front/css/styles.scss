@@ -6,38 +6,61 @@ body {
         flex-direction: column;
         align-items: center;
     
-    .btn {
-        background-color: #dc161b;
-        border: 2px solid white;
-        color: white
-    }
-
+        .btn {
+            width: 200px;
+            background-color: #dc161b;
+            border: 2px solid white;
+            color: white
+        }
         .accueil-container {
             display: flex;
             max-width: 1200px;
             align-items: baseline;
-
+            justify-content: space-between;
 
             .titre-slogan {
-                width: 70%;
+                width: 50%;
                 display: flex;
                 flex-direction: column;
                 color:white;
                 
-
                 h2 {
-                    font-size: 4rem;
+                    font-size: 3rem;
                 }
                 h6 {
-                    font-size: 2.5rem;
+                    font-size: 1.5rem;
                 }
             }
             .logo-container {
                 object-fit: contain;
-                max-width: 80%;
-            }
+                width: 50%;
 
+                img {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+    // formulaires
+
+    form {
+        width: 50%;
+        margin-left: 25%;
+        color: #dc161b;
+
+        .btn {
+            background-color: #dc161b;
+            border: 2px solid white;
+            color: white
         }
 
+        
+        
     }
+    a.btn {
+        background-color: #dc161b;
+        border: 2px solid white;
+        color: white
+    } 
 }
