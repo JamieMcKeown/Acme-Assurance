@@ -1,4 +1,5 @@
 import tpl from '../../js/utils/avecTemplateHtml'
+import {http_put} from '../utils/request'
 
 
 
@@ -6,7 +7,8 @@ export default tpl({
     template: './html/demandesExistant.html',
     data () {
         return {
-            etape1 : true,
+            search: true,
+            etape1 : false,
             etape2 : false,
             etape3 : false,
             prenom : "",
@@ -19,6 +21,9 @@ export default tpl({
             coutVoitures : 0,
             coutMaison : 0,
             coutTotale : 0, 
+            courrielPourRecherche: "",
+            api : "http://apiacme/api/user/",
+            info: [],
             
         }
     },
@@ -73,9 +78,20 @@ export default tpl({
                 }
 
             this.coutTotale = this.coutVoitures + this.coutMaison
-        }
+        },
+     
+        getDemande(){
+            this.api = this.api + this.courrielPourRecherche;
+
+            http_put(this.api, {
+                prenom: this.prenom
+                
+            }).then(data => {
+                this.$router.push("/formulaires")
+            })
      
 
+        }
       
 
         

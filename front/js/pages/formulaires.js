@@ -1,4 +1,5 @@
 import tpl from '../utils/avecTemplateHtml'
+import {http_post} from '../utils/request'
 
 export default tpl({
     template: './html/formulaires.html',
@@ -17,6 +18,7 @@ export default tpl({
            coutVoitures : 0,
            coutMaison : 0,
            coutTotale : 0,
+           api : 'http://apiacme/api/user/new',
         }
     },
     mounted(){
@@ -35,7 +37,7 @@ export default tpl({
             localStorage.setItem("codePostale", this.codePostale)
             localStorage.setItem("courriel", this.courriel)
             this.etape2 = true
-            console.log(localStorage)
+            
             
             
         },
@@ -45,7 +47,6 @@ export default tpl({
             localStorage.setItem("cpAssurer", this.cpAssurer)
             localStorage.setItem("nombreVoitures", this.nombreVoitures)
             localStorage.setItem("reclamations", this.reclamations)
-            console.log(localStorage)
             this.etape3 = true
 
            //calcul assurance maison
@@ -58,17 +59,27 @@ export default tpl({
                 }
             //calcul assurance vouitures 
             this.coutVoitures = this.nombreVoitures * 750
-
             if (this.reclamations){
-                this.reclamations = "oui"
                 this.coutVoitures = (this.coutVoitures * 1.25)
             }
-                else {
-                    this.reclamations = "non"
-                }
-
+             
             this.coutTotale = this.coutVoitures + this.coutMaison
-        }
+        },
 
-    },
+        envoyerBD() {
+            http_post(this.api, {
+                prenom: this.prenom,
+                nom: this.nom,
+                courriel: this.courriel,
+                code_postal: this.codePostale,
+                code_postal_assurer: this.cpAssurer,
+                nombre_voitures: this.nombreVoitures,
+                reclamations_dep2015: this.reclamations,
+                }).then (data => {
+                    this.$router.push("/")
+                })
+
+            localStorage.clear()
+        }  
+    }   
 })

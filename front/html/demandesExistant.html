@@ -1,7 +1,6 @@
 <div class="demandesExistants">
 
     <div class="accueil">
-
         <div class="accueil-container">
             <div class="titre-slogan">
                 <h2>Acme Assurance</h2>
@@ -11,10 +10,13 @@
                 <img src="../images/logo.jpg" alt="" srcset="">
             </div>
         </div>
-    
-       
-    
     </div>
+
+    <form v-if="search" class="searchContainer mb-5" @submit.prevent >
+        <label>entrez votre courriel</label>
+        <input v-model="courrielPourRecherche"type="text" name="" id="">
+        <button @click="getDemande"type="submit" class="btn  mt-2 ">soumettre</button>
+    </form>
 
     <form 
         v-if="etape1"
@@ -22,7 +24,7 @@
       <h3>étape 1 de 2</h3>
         <div class="form-group">
           <label>prénom</label>
-          <input v-model="prenom" type="text" class="form-control" >
+          <input v-model="prenom" type="text" class="form-control" value="prenom" >
         </div>
         <div class="form-group">
           <label >nom</label>
