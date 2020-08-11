@@ -56,11 +56,10 @@
 
     </form>
 
-  
       <div v-if="etape3" class="jumbotron">
           <h1 class="display-4">sommaire de votre demande</h1>
           <p class="lead">{{prenom}} {{ nom }}</p>
-          <hr class="my-4">
+          <hr class="my-2">
           <p>nombre de voitures assurer : {{nombreVoitures}}</p>
           <p>réclamation/s depuis 2015 : {{reclamations}}</p>
           <p>code postale assurer : {{cpAssurer}}</p>
@@ -69,6 +68,11 @@
           <p>coute totale $ ( automobiles + maison) : {{coutTotale}}</p>
           <a @click="envoyerBD" class="btn" href="#" role="button">confirmer</a>
           <a @click="homepageRoute" class="btn" href="#" role="button">retour a l'accueil</a>
+        </div>
+
+        <div v-if="etape4" class="jumbotron mt-3">
+            <h6>Nous avons recu votre demande, verifier vos courriels pour les prochaine étapes</h6>
+            <button @click="homepageRoute"type="submit" class="btn  mt-4 ">retour a l'accueil</button>
         </div>
 </div>
 

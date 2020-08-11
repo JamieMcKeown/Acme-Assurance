@@ -18,4 +18,5 @@ use App\Demande;
 
 
 Route::post('/user/new', 'Demandes@create');
-Route::put('/user/{courriel}', 'Demandes@showWithCourriel');
+Route::get('/user/{courriel}', 'Demandes@showWithCourriel');
+Route::post('/user/edit/{courriel}', 'Demandes@modify');

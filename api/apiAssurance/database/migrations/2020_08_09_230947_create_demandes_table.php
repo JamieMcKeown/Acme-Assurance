@@ -22,7 +22,7 @@ class CreateDemandesTable extends Migration
             $table->string('code_postal', 6)->nullable();
             $table->string('code_postal_assurer', 6)->nullable();
             $table->integer('nombre_voitures');
-            $table->boolean('reclamations_dep2015');
+            $table->boolean('reclamations_dep2015')->nullable();
             $table->timestamps();
         });
     }

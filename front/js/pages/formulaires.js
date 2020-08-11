@@ -8,6 +8,7 @@ export default tpl({
            etape1 : true,
            etape2 : false,
            etape3 : false,
+           etape4 : false,
            prenom : "",
            nom    : "",
            codePostale : "",
@@ -28,7 +29,6 @@ export default tpl({
         homepageRoute() {
             this.$router.push("/")
             localStorage.clear()
-            
         },
         lienForm2() {
             this.etape1 = false
@@ -37,9 +37,6 @@ export default tpl({
             localStorage.setItem("codePostale", this.codePostale)
             localStorage.setItem("courriel", this.courriel)
             this.etape2 = true
-            
-            
-            
         },
         lienForm3() {
             this.etape1 = false
@@ -48,9 +45,7 @@ export default tpl({
             localStorage.setItem("nombreVoitures", this.nombreVoitures)
             localStorage.setItem("reclamations", this.reclamations)
             this.etape3 = true
-
            //calcul assurance maison
-
             if (this.cpAssurer == ""){
                 this.coutMaison = 0
             }
@@ -62,7 +57,6 @@ export default tpl({
             if (this.reclamations){
                 this.coutVoitures = (this.coutVoitures * 1.25)
             }
-             
             this.coutTotale = this.coutVoitures + this.coutMaison
         },
 
@@ -76,10 +70,10 @@ export default tpl({
                 nombre_voitures: this.nombreVoitures,
                 reclamations_dep2015: this.reclamations,
                 }).then (data => {
-                    this.$router.push("/")
+                    
                 })
-
-            localStorage.clear()
+            this.etape3 = false
+            this.etape4 = true
         }  
     }   
 })

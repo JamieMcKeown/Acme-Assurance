@@ -1,16 +1,17 @@
 import tpl from '../../js/utils/avecTemplateHtml'
-import {http_put} from '../utils/request'
-
-
+import {http_post, http_get} from '../utils/request'
 
 export default tpl({
     template: './html/demandesExistant.html',
     data () {
         return {
             search: true,
+            errorMessage : false,
             etape1 : false,
             etape2 : false,
             etape3 : false,
+            etape4 : false,
+            id : "",
             prenom : "",
             nom    : "",
             codePostale : "",
@@ -24,19 +25,21 @@ export default tpl({
             courrielPourRecherche: "",
             api : "http://apiacme/api/user/",
             info: [],
+            apiPost : "http://apiacme/api/user/edit/"
             
         }
     },
     mounted(){
    
-   
     },
-
     methods: {
         homepageRoute() {
             this.$router.push("/")
             localStorage.clear()
             
+        },
+        routeDemandesExistant() {
+            this.$router.push("/demandesExistant")
         },
         lienForm2() {
             this.etape1 = false
@@ -46,8 +49,6 @@ export default tpl({
             localStorage.setItem("courriel", this.courriel)
             this.etape2 = true
             console.log(localStorage)
-            
-            
         },
         lienForm3() {
             this.etape1 = false
@@ -73,32 +74,42 @@ export default tpl({
                 this.reclamations = "oui"
                 this.coutVoitures = (this.coutVoitures * 1.25)
             }
-                else {
-                    this.reclamations = "non"
-                }
-
             this.coutTotale = this.coutVoitures + this.coutMaison
         },
      
         getDemande(){
             this.api = this.api + this.courrielPourRecherche;
-
-            http_put(this.api, {
-                prenom: this.prenom
-                
-            }).then(data => {
-                this.$router.push("/formulaires")
+            
+            http_get(this.api).then(data => {
+               this.prenom = data[0].prenom,
+               this.nom = data[0].nom,
+               this.courriel = data[0].courriel,
+               this.codePostale = data[0].code_postal,
+               this.cpAssurer = data[0].code_postal_assurer,
+               this.nombreVoitures = data[0].nombre_voitures,
+               this.reclamations = data[0].reclamations_dep2015
+               console.log(data)
             })
-     
+                this.search = false,
+                this.etape1 = true,
+                this.etape2 = true
+        },
 
-        }
-      
-
-        
-        
-       
-
-     
-
+        envoyerBD(e) {
+            let url = this.apiPost +  this.courriel
+            http_post(url, {
+                prenom: this.prenom,
+                nom: this.nom,
+                courriel: this.courriel,
+                code_postal: this.codePostale,
+                code_postal_assurer: this.cpAssurer,
+                nombre_voitures: this.nombreVoitures,
+                reclamations_dep2015: this.reclamations,
+                }).then (data => {
+                    
+                })
+                this.etape3 = false
+                this.etape4 = true
+        }  
     },
 })
